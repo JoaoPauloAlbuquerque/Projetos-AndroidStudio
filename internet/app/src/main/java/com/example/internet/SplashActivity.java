@@ -38,7 +38,6 @@ public class SplashActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         i.putParcelableArrayListExtra("objetos", list);
         startActivity(i);
-        this.finish();
     }
 
     private class Conexao extends AsyncTask<URL, Void, ArrayList<Objeto>>{
