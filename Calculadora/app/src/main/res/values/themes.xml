@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Calculadora" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#0354da</item>
+        <item name="colorPrimaryDark">#0354da</item>
+        <item name="colorAccent">@color/teal_200</item>
+
+
+
+        <!-- Customize your theme here. -->
+
+        <item name="cor_fundo">#FFFFFF</item>
+        <item name="cor_titulo">#020613</item>
+        <item name="cor_texto_botao_principal">#F6F6F6</item>
+        <item name="cor_fundo_botao_principal">#0354da</item>
+        <item name="cor_fundo_recyclerview">#F3F3F3</item>
+        <item name="cor_fundo_botao_numeros_calculadora">#93BEFF</item>
+
+    </style>
+</resources>

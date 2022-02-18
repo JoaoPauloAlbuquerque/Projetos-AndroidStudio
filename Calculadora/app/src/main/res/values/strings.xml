@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="botao_primeiro_grau">Primeiro grau</string>
+    <string name="botao_segundo_grau">Segundo grau</string>
+    <string name="calculadora">Calculadora</string>
+    <string name="titulo">O que deseja calcular primeiro?</string>
+    <string name="a">a</string>
+    <string name="b">b</string>
+    <string name="c">c </string>
+    <string name="zerar">Zerar</string>
+    <string name="calcular">Calcular</string>
+    <string name="titulo_segundo_grau">Segundo grau</string>
+    <string name="titulo_tela_pricipal">Calculadora</string>
+    <string name="titulo_primeiro_grau">Primeiro grau</string>
+    <string name="titulo_calculadora">Calculadora</string>
+    <string name="x_a">x² + </string>
+    <string name="x_b">x + </string>
+    <string name="x_c"> = 0</string>
+    <string name="x_a_primeiro_grau">x + </string>
+    <string name="x_c_primeiro_grau"> = </string>
+    <string name="b_primeiro_grau">b </string>
+</resources>

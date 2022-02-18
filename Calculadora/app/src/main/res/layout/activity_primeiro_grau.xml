@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/cor_fundo"
+    android:orientation="vertical"
+    tools:context=".PrimeiroGrauActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="?attr/cor_fundo_botao_principal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:onClick="voltar"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_voltar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/titulo_primeiro_grau"
+            android:textColor="?attr/cor_texto_botao_principal"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/texto_a_primeiro_grau"
+            style="@style/textos"
+            android:text="@string/a"/>
+
+        <TextView
+            android:id="@+id/texto_x_a_primeiro_grau"
+            style="@style/textos"
+            android:text="@string/x_a_primeiro_grau"/>
+
+        <TextView
+            android:id="@+id/texto_b_primeiro_grau"
+            style="@style/textos"
+            android:text="@string/b_primeiro_grau"/>
+
+        <TextView
+            android:id="@+id/texto_x_c_primeiro_grau"
+            style="@style/textos"
+            android:text="@string/x_c_primeiro_grau"/>
+
+        <TextView
+            android:id="@+id/texto_c_primeiro_grau"
+            style="@style/textos"
+            android:text="@string/c"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/edit_a_primeiro_grau"
+            style="@style/editText_style"
+            android:hint="@string/a"/>
+
+        <EditText
+            android:id="@+id/edit_b_primeiro_grau"
+            style="@style/editText_style"
+            android:hint="@string/b"/>
+
+        <EditText
+            android:id="@+id/edit_c_primeiro_grau"
+            style="@style/editText_style"
+            android:hint="@string/c"
+            android:imeOptions="actionGo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/botao_zerar_primeiro_grau"
+            style="@style/botao_principal"
+            android:onClick="zerar"
+            android:text="@string/zerar"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/botao_calcular_primeiro_grau"
+            style="@style/botao_principal"
+            android:onClick="calcular"
+            android:text="@string/calcular"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_primeiro_grau"
+        style="@style/recyclerview_styles"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/recyclerview_item"/>
+
+</LinearLayout>

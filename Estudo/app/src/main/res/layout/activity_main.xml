@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background_main"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_view_top_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="8dp">
+
+        <View
+            android:id="@+id/view_top_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_card_main" />
+
+        <TextView
+            android:id="@+id/tilte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/macroapp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_view_center_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="24dp">
+
+            <TextView
+                android:id="@+id/tilte_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/tilte_center"
+                android:textColor="?attr/color_Text"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_recycler"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_bloco"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:onClick="abrirRecycler"
+                app:layout_constraintBottom_toTopOf="@id/view_animator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilte_center" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="4dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_recycler"
+                app:layout_constraintEnd_toEndOf="@id/view_recycler"
+                app:layout_constraintStart_toStartOf="@id/view_recycler"
+                app:layout_constraintTop_toTopOf="@id/view_recycler">
+
+                <ImageView
+                    android:id="@+id/icon_recycler"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_recycler" />
+
+                <TextView
+                    android:id="@+id/tilte_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/icon_recycler"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/tilte_recycler"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_animator"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_bloco"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:onClick="abrirAnimator"
+                app:layout_constraintBottom_toTopOf="@id/view_audio"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_recycler" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="4dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_animator"
+                app:layout_constraintEnd_toEndOf="@id/view_animator"
+                app:layout_constraintStart_toStartOf="@id/view_animator"
+                app:layout_constraintTop_toTopOf="@id/view_animator">
+
+                <ImageView
+                    android:id="@+id/icon_animator"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_animator" />
+
+                <TextView
+                    android:id="@+id/tilte_animator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/icon_animator"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/tilte_animator"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_audio"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_bloco"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:onClick="abrirTelaAudio"
+                app:layout_constraintBottom_toTopOf="@id/view_view_pager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_animator" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="4dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_audio"
+                app:layout_constraintEnd_toEndOf="@id/view_audio"
+                app:layout_constraintStart_toStartOf="@id/view_audio"
+                app:layout_constraintTop_toTopOf="@id/view_audio">
+
+                <ImageView
+                    android:id="@+id/icon_audio"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_audio" />
+
+                <TextView
+                    android:id="@+id/tilte_audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/icon_audio"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/tilte_audio"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_view_pager"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_bloco"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:onClick="abrirTelaFragments"
+                app:layout_constraintBottom_toTopOf="@id/view_internet"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_audio" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="4dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_view_pager"
+                app:layout_constraintEnd_toEndOf="@id/view_view_pager"
+                app:layout_constraintStart_toStartOf="@id/view_view_pager"
+                app:layout_constraintTop_toTopOf="@id/view_view_pager">
+
+                <ImageView
+                    android:id="@+id/icon_view_pager"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_fragments" />
+
+                <TextView
+                    android:id="@+id/tilte_view_pager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/icon_view_pager"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/tilte_view_pager"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_internet"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_bloco"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:onClick="abrirInternet"
+                app:layout_constraintBottom_toTopOf="@id/view_recycler5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_view_pager" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="4dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/view_internet"
+                app:layout_constraintEnd_toEndOf="@id/view_internet"
+                app:layout_constraintStart_toStartOf="@id/view_internet"
+                app:layout_constraintTop_toTopOf="@id/view_internet">
+
+                <ImageView
+                    android:id="@+id/icon_internet"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_internet" />
+
+                <TextView
+                    android:id="@+id/tilte_internet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/icon_internet"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/tilte_internet"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_recycler5"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_bloco"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_internet" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Estudo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_dark</item>
+
+        <item name="colorPrimaryDark">@color/blue_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/blue_dark</item>
+
+        <!-- Customize your theme here. -->
+
+        <item name="backgroud_splash">#191970</item>
+        <item name="background_main">#050546</item>
+        <item name="color_Card_View">#191970</item>
+        <item name="color_Text">#FFFFFF</item>
+        <item name="color_bloco">#044e7d</item>
+        <item name="color_blue">@color/blue_dark</item>
+
+        <!-- Cores gradiente RecyclerView -->
+
+        <item name="start_color">#134E88</item>
+        <item name="center_color">#1C8383</item>
+        <item name="end_color">#45BCBC</item>
+        <item name="color_fundo_bar_whatsapp">#12867E</item>
+    </style>
+</resources>

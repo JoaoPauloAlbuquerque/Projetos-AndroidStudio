@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/cor_fundo"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="?attr/cor_fundo_botao_principal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/titulo_tela_pricipal"
+            android:textAlignment="center"
+            android:textColor="?attr/cor_texto_botao_principal"
+            android:textSize="32dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="24dp"
+        android:background="@drawable/shape_fundo_principal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="24dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/titulo"
+                android:textAlignment="center"
+                android:textColor="?attr/cor_titulo"
+                android:textSize="32sp" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora"
+                style="@style/botao_principal"
+                android:layout_width="match_parent"
+                android:onClick="abrirCalculadora"
+                android:text="@string/calculadora" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_primeiro_grau"
+                style="@style/botao_principal"
+                android:layout_width="match_parent"
+                android:onClick="abrirPrimeiroGrau"
+                android:text="@string/botao_primeiro_grau" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_segundo_grau"
+                style="@style/botao_principal"
+                android:layout_width="match_parent"
+                android:onClick="abrirSegundoGrau"
+                android:text="@string/botao_segundo_grau" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

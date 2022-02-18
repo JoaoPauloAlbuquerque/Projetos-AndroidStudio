@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.estudo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_icon_estudo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Estudo">
+        <activity
+            android:name=".inetrnet.TerremotoActivity"
+            android:exported="false" />
+        <!-- <activity -->
+        <!-- android:name=".fragments.PhasesFragmentsActivity" -->
+        <!-- android:exported="false"> -->
+        <!--  -->
+        <!-- &lt;!&ndash;        este comando faz aparecer o batão para voltar na actionBar, -->
+        <!-- porem, a actionBar precisa está ativa nos themas. -->
+        <!-- <meta-data android:name="android.support.PARENT_ACTIVITY" -->
+        <!-- android:value=".PhasesActivity"/>       &ndash;&gt; -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name=".fragments.ColorFragmentsActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".fragments.NumberFragmentsActivity" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".fragments.FragmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AudioActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Animator_Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Recycler_Activity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splash_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

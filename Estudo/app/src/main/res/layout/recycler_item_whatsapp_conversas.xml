@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    tools:showIn="@layout/activity_fragments_conversas">
+
+    <ImageView
+        android:id="@+id/icon_whatsapp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_icon_whatsapp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/contato_whatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/icon_whatsapp"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/icon_whatsapp"
+        android:text="Nome"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mensagem_whatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/icon_whatsapp"
+        android:layout_marginLeft="16dp"
+        android:layout_toLeftOf="@id/bolinha_whatsapp"
+        android:layout_toRightOf="@id/icon_whatsapp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="Mensgem Mensagem mensagem mensagem Mensgem Mensagem mensagem mensagem"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/bolinha_whatsapp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_bolinha_whatsapp" />
+
+    <TextView
+        android:id="@+id/data_whatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="5:55 PM" />
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="cor_fundo" format="color" />
+    <attr name="cor_titulo" format="color"/>
+    <attr name="cor_texto_botao_principal" format="color" />
+    <attr name="cor_fundo_botao_principal" format="color"/>
+    <attr name="cor_fundo_recyclerview" format="color"/>
+    <attr name="cor_fundo_botao_numeros_calculadora" format="color"/>
+
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="botao_calculadora">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="botao_calculadora_operacao" parent="botao_calculadora">
+        <item name="android:background">@drawable/ripple_botao_calculadora</item>
+        <item name="android:textColor">?attr/cor_texto_botao_principal</item>
+    </style>
+
+    <style name="botao_calculadora_numeros" parent="botao_calculadora">
+        <item name="android:background">@drawable/ripple_botao_numeros_calculadora</item>
+        <item name="android:textColor">?attr/cor_titulo</item>
+    </style>
+
+
+
+    <style name="botao_principal">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:background">@drawable/shape_botao_principal</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?attr/cor_texto_botao_principal</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+
+    <style name="editText_style">
+        <item name="android:layout_width">74dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">numberSigned|numberDecimal</item>
+        <item name="android:textColor">?attr/cor_titulo</item>
+        <item name="android:textColorHint">?attr/cor_titulo</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+
+    <style name="textos">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">?attr/cor_titulo</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+
+
+    <style name="recyclerview_styles">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?attr/cor_fundo_recyclerview</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+</resources>

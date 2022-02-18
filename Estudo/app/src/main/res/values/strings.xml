@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Estudo</string>
+    <string name="tilte_center">Componentes</string>
+    <string name="tilte_recycler">RecyclerView</string>
+    <string name="macroapp">Macroapp</string>
+    <string name="definicao">Definições para:\nMacroapp</string>
+    <string name="tilte_animator">Animator</string>
+    <string name="tilte_audio">Audio</string>
+    <string name="number_activity">Number Activity</string>
+    <string name="phases_activity">Phases Activity</string>
+    <string name="color_activity">Color Activity</string>
+    <string name="family_activity">Family Activity</string>
+    <string name="tilte_view_pager">View Pager</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="tilte_internet">Internet</string>
+</resources>

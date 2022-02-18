@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.StatusFragmentsActivity">
+
+    <RelativeLayout
+        android:id="@+id/meu_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/icon_status"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/shape_icon_whatsapp"
+            android:src="@drawable/ic_person" />
+
+        <TextView
+            android:id="@+id/titulo_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/icon_status"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/icon_status"
+            android:text="Meu status"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sub_titulo_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/icon_status"
+            android:layout_toRightOf="@id/icon_status"
+            android:text="Toque aqui para atualizar seu status"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:textStyle="bold"
+        android:text="Atualizações recentes"/>
+
+</LinearLayout>

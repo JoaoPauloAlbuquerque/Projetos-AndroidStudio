@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp"
+    android:orientation="horizontal"
+    android:background="@drawable/ripple_item_recyclerview"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/magnitude"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/magnitude_circle"
+        android:text="5.5"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <TextView
+            android:id="@+id/local_primario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="false"
+            android:ellipsize="end"
+            android:text="Perto de"
+            android:textColor="@color/textColorEarthquakeDetails"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/local_secundario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="false"
+            android:ellipsize="end"
+            android:text="Estados Unidos"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="24/05/2021"
+            android:textColor="@color/textColorEarthquakeDetails"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/hora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="5:34 PM"
+            android:textColor="@color/textColorEarthquakeDetails"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

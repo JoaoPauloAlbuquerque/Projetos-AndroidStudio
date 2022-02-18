@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/JoaoPaulo/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.3640625" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/animacao.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_animator.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_camera.xml" value="0.15260416666666668" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_fragments.xml" value="0.2" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_pause.xml" value="0.32037037037037036" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_person.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_play.xml" value="0.32037037037037036" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ic_recycler.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ripple_bloco.xml" value="0.33611111111111114" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ripple_blocor.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ripple_card_main.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/ripple_item_recycler.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/selected_whatsapp.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/seleted_whatsapp.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/shape_bloco.xml" value="0.33611111111111114" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/shape_bolinha_whatsapp.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/shape_card_main.xml" value="0.33611111111111114" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/shape_icon_whatsapp.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/shape_item_recycler.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/drawable/shape_user_main.xml" value="0.33611111111111114" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_animator.xml" value="0.29074074074074074" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_audio.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_color.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments.xml" value="0.3640625" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_camera.xml" value="0.22685185185185186" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_chamadas.xml" value="0.3640625" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_color.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_conversas.xml" value="0.4" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_number.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_phases.xml" value="0.21296296296296297" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_fragments_status.xml" value="0.3640625" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_main.xml" value="0.3236111111111111" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_number.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_phases.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_recycler.xml" value="0.25" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_splash.xml" value="0.3037037037037037" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/activity_terremoto.xml" value="0.25" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/fragment_blank.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/recycler_item.xml" value="0.29074074074074074" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/recycler_item_terremoto.xml" value="0.3640625" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/recycler_item_whatsapp_conversas.xml" value="0.264" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/layout/splash.xml" value="0.3037037037037037" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Estudo/app/src/main/res/mipmap-anydpi-v26/ic_icon_estudo.xml" value="0.33055555555555555" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

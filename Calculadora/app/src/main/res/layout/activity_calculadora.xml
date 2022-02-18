@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/cor_fundo"
+    android:orientation="vertical"
+    tools:context=".CalculadoraActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="?attr/cor_fundo_botao_principal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:onClick="voltar"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_voltar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/titulo_calculadora"
+            android:textColor="?attr/cor_texto_botao_principal"
+            android:textSize="32sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/conta"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:ellipsize="start"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical|right"
+        android:paddingEnd="16dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="?attr/cor_titulo"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:ellipsize="start"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical|right"
+        android:paddingEnd="16dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="?attr/cor_titulo"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_abrir_parenteses"
+                style="@style/botao_calculadora_operacao"
+                android:text="(" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_fechar_parenteses"
+                style="@style/botao_calculadora_operacao"
+                android:text=")" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_limpar"
+                style="@style/botao_calculadora_operacao"
+                android:layout_weight="1"
+                android:text="C" />
+
+            <ImageView
+                android:id="@+id/botao_calculadora_backspace"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_botao_calculadora"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="center"
+                android:src="@drawable/ic_backspace" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_sete"
+                style="@style/botao_calculadora_numeros"
+                android:text="7" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_oito"
+                style="@style/botao_calculadora_numeros"
+                android:text="8" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_nove"
+                style="@style/botao_calculadora_numeros"
+                android:text="9" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_dividir"
+                style="@style/botao_calculadora_operacao"
+                android:text="/" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_quatro"
+                style="@style/botao_calculadora_numeros"
+                android:text="4" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_cinco"
+                style="@style/botao_calculadora_numeros"
+                android:text="5" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_seis"
+                style="@style/botao_calculadora_numeros"
+                android:text="6" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_multiplicar"
+                style="@style/botao_calculadora_operacao"
+                android:text="x" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_um"
+                style="@style/botao_calculadora_numeros"
+                android:text="1" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_dois"
+                style="@style/botao_calculadora_numeros"
+                android:text="2" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_tres"
+                style="@style/botao_calculadora_numeros"
+                android:text="3" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_subtracao"
+                style="@style/botao_calculadora_operacao"
+                android:text="-" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_ponto"
+                style="@style/botao_calculadora_operacao"
+                android:text="." />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_zero"
+                  style="@style/botao_calculadora_numeros"
+                android:text="0" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_igualdade"
+                style="@style/botao_calculadora_operacao"
+                android:text="=" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/botao_calculadora_soma"
+                style="@style/botao_calculadora_operacao"
+                android:text="+" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
