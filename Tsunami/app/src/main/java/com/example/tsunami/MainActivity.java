@@ -142,14 +142,22 @@ public class MainActivity extends AppCompatActivity {
             String jsonResponse = "";
             HttpURLConnection urlConnection = null;
             InputStream inputStream = null;
+
+            if (url == null){
+                return jsonResponse;
+            }
+
             try {
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setReadTimeout(10000 /* milliseconds */);
                 urlConnection.setConnectTimeout(15000 /* milliseconds */);
                 urlConnection.connect();
-                inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);
+                //se o código de resposta da conexão for 200, significa que deu erro na requisição
+                if(urlConnection.getResponseCode() == 200){
+                    inputStream = urlConnection.getInputStream();
+                    jsonResponse = readFromStream(inputStream);
+                }
             } catch (IOException e) {
                 // TODO: Handle the exception
             } finally {
