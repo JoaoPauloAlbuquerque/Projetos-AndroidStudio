@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity {
         /**
          * contante com a URL da API
          */
-        public static final String URL_ = "https://earthquake.usgs.gov/fdsnws/event/1/query?minmag=5format=geojson";
+        public static final String URL_ = "https://earthquake.usgs.gov/fdsnws/event/1/query?minmag=5&format=geojson";
 
         private ArrayList<Objeto> list;
 
