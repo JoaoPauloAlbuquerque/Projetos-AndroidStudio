@@ -1,6 +1,7 @@
 package com.example.internet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -23,7 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SplashActivity extends AppCompatActivity {
+import android.content.AsyncTaskLoader;
+
+public class SplashActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Objeto> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
