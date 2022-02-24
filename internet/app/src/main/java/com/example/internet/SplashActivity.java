@@ -43,5 +43,7 @@ public class SplashActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     @Override
-    public void onLoaderReset(Loader<ArrayList<Objeto>> loader) {}
+    public void onLoaderReset(Loader<ArrayList<Objeto>> loader) {
+        
+    }
 }
