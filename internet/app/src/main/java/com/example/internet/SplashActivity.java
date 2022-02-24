@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class SplashActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Objeto>>{
 
     private static final int TERREMOTO_LOADER_ID = 1;
-    private static final String URL_ = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
+    private static final String URL_ = "https://earthquake.usgs.gov/fdsnws/event/1/query?minmag=5&format=geojson";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

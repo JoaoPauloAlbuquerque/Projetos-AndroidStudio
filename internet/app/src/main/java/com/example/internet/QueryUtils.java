@@ -27,15 +27,16 @@ public class QueryUtils {
     public static final String VALOR_SEPARADOR = "Perto de";
     public static final String SEPARADOR_LOCAL = "of";
 
-    public QueryUtils(){}
+    public QueryUtils() {
+    }
 
-    public static ArrayList<Objeto> getArrayList(String url){
+    public static ArrayList<Objeto> getArrayList(String url) {
         //essa String recebe o valor do JSON
         String json = "";
         //atribuindo o JSON na String
         try {
             json = getJson(url);
-        }catch (IOException e){
+        } catch (IOException e) {
             Log.e("Erro: ", "ao fechar conexão - " + e);
         }
         //artibuindo à lista o Array de Objetos
@@ -48,6 +49,7 @@ public class QueryUtils {
      * este método retornar uma String com o JSON já configurado
      * primeiro ele cria a conexão com o servidor, em seguida configura o
      * JSON chamando o método getStringJson()
+     *
      * @return
      * @throws IOException
      */
@@ -70,7 +72,7 @@ public class QueryUtils {
             //adicionando o JSON na String de retorno do método apartir do fluxo de bytes
             jsonResponse = getStringJson(inputStream);
         } catch (IOException e) {
-            Log.e("Erro ao pegar conexão: ", ""+e);
+            Log.e("Erro ao pegar conexão: ", "" + e);
         } finally {
             //finalizando as conexões
             if (urlConnection != null) {
@@ -86,12 +88,13 @@ public class QueryUtils {
 
     /**
      * este método cria a URL
+     *
      * @param stringUrl
      * @return
      */
-    private static URL getUrl(String stringUrl){
+    private static URL getUrl(String stringUrl) {
         URL url = null;
-        try{
+        try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
             Log.e("Erro: ", "ao obter URL - " + e);
@@ -102,11 +105,12 @@ public class QueryUtils {
 
     /**
      * este método faz a leitura da string JSON da variável inputStream
+     *
      * @param inputStream
      * @return
      * @throws IOException
      */
-    private static String getStringJson(InputStream inputStream) throws IOException{
+    private static String getStringJson(InputStream inputStream) throws IOException {
         //StringBuilder ajusta o próprio tamanho para poder caber o conteúdo da variável
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -131,10 +135,11 @@ public class QueryUtils {
      * este método recebe uma String contendo o JSON e faz
      * todas as buscas necessárias e organiza os resultados em um ArrayList<Objetos>,
      * e retorna esse Array para o método doInBackground()
+     *
      * @param json
      * @return
      */
-    private static ArrayList<Objeto> getList(String json){
+    private static ArrayList<Objeto> getList(String json) {
         //Array de retorno
         ArrayList<Objeto> lista = new ArrayList<>();
         try {
@@ -148,20 +153,16 @@ public class QueryUtils {
                 JSONObject obj = jArray.getJSONObject(i).getJSONObject("properties");
                 //seleciona e organiza todos os valores dentro do ArrayList<Objeto>
                 //esse ArrayList<Objeto> vai popular o RecyclerView
-                double mag = obj.getDouble("mag");
-                //seleciono apenas os terremos com magnitude maiores ou iguais á 3.0
-                if(mag>= 3.0f) {
-                    lista.add(new Objeto()
-                            .setMagnitude(mag)
-                            .setLocalPrimario(getLocal(obj.getString("place"))[0])
-                            .setLocalSecundario(getLocal(obj.getString("place"))[1])
-                            .setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(obj.getLong("time"))))
-                            .setHora(new SimpleDateFormat("h:mm a").format(new Date(obj.getLong("time"))))
-                            .setUrl(obj.getString("url")));
-                }
+                lista.add(new Objeto()
+                        .setMagnitude(obj.getDouble("mag"))
+                        .setLocalPrimario(getLocal(obj.getString("place"))[0])
+                        .setLocalSecundario(getLocal(obj.getString("place"))[1])
+                        .setData(new SimpleDateFormat("dd/MM/yyyy").format(new Date(obj.getLong("time"))))
+                        .setHora(new SimpleDateFormat("h:mm a").format(new Date(obj.getLong("time"))))
+                        .setUrl(obj.getString("url")));
             }
         } catch (JSONException e) {
-            Log.e("ERRO JSON: ", ""+e.getMessage());
+            Log.e("ERRO JSON: ", "" + e.getMessage());
         }
 
         return lista;
@@ -169,10 +170,11 @@ public class QueryUtils {
 
     /**
      * este método separa o local em duas String
+     *
      * @param s - recebe uma String com o local inteiro, para poder dividi-lo em dois
      * @return - tem como retorno um Array de String de tamanho 2
      */
-    private static String[] getLocal(String s){
+    private static String[] getLocal(String s) {
 
         String localPrimario = "";
         String localSecundario = "";
@@ -183,7 +185,7 @@ public class QueryUtils {
         //será divida em duas string.
         //caso não, será atribuido ao local primário um valor pré-determinado pela constante,
         //e para o local secundário, será atribuido o local completo.
-        if(s.contains(SEPARADOR_LOCAL)){
+        if (s.contains(SEPARADOR_LOCAL)) {
             localPrimario = s.split(SEPARADOR_LOCAL)[0] + SEPARADOR_LOCAL;
             localSecundario = s.split(SEPARADOR_LOCAL)[1];
         } else {
