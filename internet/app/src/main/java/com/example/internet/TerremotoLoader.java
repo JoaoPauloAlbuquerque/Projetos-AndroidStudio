@@ -8,10 +8,11 @@ import java.util.ArrayList;
 public class TerremotoLoader extends AsyncTaskLoader<ArrayList<Objeto>> {
 
     private String url;
-
+    private Context context;
     public TerremotoLoader(Context context, String url) {
         super(context);
         this.url = url;
+        this.context = context;
     }
 
     /**

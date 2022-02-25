@@ -1,7 +1,12 @@
 package com.example.internet;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +32,7 @@ public class QueryUtils {
     public static final String VALOR_SEPARADOR = "Perto de";
     public static final String SEPARADOR_LOCAL = "of";
 
-    public QueryUtils() {
-    }
+    public QueryUtils() {}
 
     public static ArrayList<Objeto> getArrayList(String url) {
         //essa String recebe o valor do JSON
@@ -36,11 +40,13 @@ public class QueryUtils {
         //atribuindo o JSON na String
         try {
             json = getJson(url);
+            Log.e("STATUS: ", "atribuiu json");
         } catch (IOException e) {
             Log.e("Erro: ", "ao fechar conexão - " + e);
         }
         //artibuindo à lista o Array de Objetos
         ArrayList<Objeto> list = getList(json);
+        Log.e("STATUS: ", "criou a lista de objetos");
 
         return list;
     }
@@ -67,12 +73,14 @@ public class QueryUtils {
             urlConnection.setReadTimeout(10000 /* milliseconds */);
             urlConnection.setConnectTimeout(15000 /* milliseconds */);
             urlConnection.connect();
+            Log.e("STATUS: ", "criou conexão");
             //esta variável recebe um fluxo de bytes
             inputStream = urlConnection.getInputStream();
             //adicionando o JSON na String de retorno do método apartir do fluxo de bytes
             jsonResponse = getStringJson(inputStream);
+            Log.e("STATUS: ", "criou jsonResponse");
         } catch (IOException e) {
-            Log.e("Erro ao pegar conexão: ", "" + e);
+            Log.e("ERRO AO CONECTAR: ", "sem acesso à internet" + e);
         } finally {
             //finalizando as conexões
             if (urlConnection != null) {
