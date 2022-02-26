@@ -2,6 +2,7 @@ package com.example.internet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;

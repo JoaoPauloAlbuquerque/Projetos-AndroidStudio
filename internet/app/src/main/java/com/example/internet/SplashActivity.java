@@ -3,6 +3,7 @@ package com.example.internet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.LoaderManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
@@ -17,14 +18,17 @@ public class SplashActivity extends AppCompatActivity implements LoaderManager.L
 
     private static final int TERREMOTO_LOADER_ID = 1;
     private static final String URL_ = "https://earthquake.usgs.gov/fdsnws/event/1/query?minmag=5&format=geojson";
-    private static Context contextSplash;
+
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        contextSplash = this;
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Carregando dados");
+        pDialog.show();
 
         LoaderManager loaderManager = this.getLoaderManager();
         loaderManager.initLoader(TERREMOTO_LOADER_ID, null, this);
@@ -52,6 +56,7 @@ public class SplashActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoadFinished(Loader<ArrayList<Objeto>> loader, ArrayList<Objeto> data) {
         Log.e("passou: ", "onLoaderFinished()");
+        pDialog.dismiss();
         if(data == null || data.size() == 0){
             iniNotConnection();
             return;
