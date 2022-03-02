@@ -1,5 +1,6 @@
 package com.example.internet;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -14,6 +15,10 @@ public class ConfiguracaoActivity extends AppCompatActivity {
     }
 
     public static class TerremotoPreferenceFragment extends PreferenceFragment {
-
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.configuracao_principal);
+        }
     }
 }
