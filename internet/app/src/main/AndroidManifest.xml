@@ -14,6 +14,7 @@
         <activity
             android:name=".ConfiguracaoActivity"
             android:exported="false" />
+
         <activity
             android:name=".NotConnection"
             android:exported="false" />
