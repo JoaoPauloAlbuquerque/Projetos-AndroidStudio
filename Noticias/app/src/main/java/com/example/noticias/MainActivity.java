@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        list = getIntent().getParcelableArrayListExtra("objeto");
+        list = QueryUtils.lista;
 
         rc = (RecyclerView) findViewById(R.id.recyclerview);
         adapter = new Adapter(list);

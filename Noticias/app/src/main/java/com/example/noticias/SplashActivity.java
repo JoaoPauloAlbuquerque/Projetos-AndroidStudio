@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class SplashActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Objeto>> {
 
-    public static final String URL = "https://newsapi.org/v2/everything?q=ucrania&language=pt&apiKey=2937df1d4f9e4194ad42591cf6179db9";
+    public static final String URL = "https://newsapi.org/v2/everything?q=ucr%C3%A2nia&language=pt&apiKey=2937df1d4f9e4194ad42591cf6179db9";
 
     private ProgressDialog progress;
 
@@ -32,9 +32,8 @@ public class SplashActivity extends AppCompatActivity implements LoaderManager.L
 
     }
 
-    private void iniMainActivity(ArrayList<Objeto> list){
+    private void iniMainActivity(){
         Intent i = new Intent(this, MainActivity.class);
-        i.putParcelableArrayListExtra("objeto", list);
         startActivity(i);
         this.finish();
     }
@@ -49,7 +48,7 @@ public class SplashActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<ArrayList<Objeto>> loader, ArrayList<Objeto> data) {
         progress.dismiss();
         if(data != null){
-            iniMainActivity(data);
+            iniMainActivity();
             return;
         }
         Log.e("Erro: ", "Valor DATA null");

@@ -1,5 +1,8 @@
 package com.example.noticias;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -14,12 +17,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class QueryUtils {
 
+    public static ArrayList<Objeto> lista = new ArrayList<>();
+
     public static ArrayList<Objeto> getArrayList(String stringUrl){
         Log.e("Status: ", "getArrayList()");
+        lista.clear();
         URL url = getUrl(stringUrl);
         String json = "";
 
@@ -37,6 +44,7 @@ public class QueryUtils {
             list = getArray(json);
         }
 
+        lista = list;
         return list;
 
     }
@@ -62,19 +70,12 @@ public class QueryUtils {
         HttpURLConnection urlConnection = null;
         InputStream stream = null;
 
-        try{
-            urlConnection = (HttpURLConnection) stringUrl.openConnection();
-            urlConnection.setRequestMethod("GET");
-            //pesquisar sobre
-            urlConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:221.0) Gecko/20100101 Firefox/31.0");
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
-            urlConnection.connect();
-
+        try {
+            urlConnection = getConnection(stringUrl);
             stream = urlConnection.getInputStream();
             json = getString(stream);
-        } catch (IOException e) {
-            Log.e("Erro: ", "ao abrir conexão " + urlConnection.getResponseCode());
+        } catch (Exception e){
+            Log.e("Erro: ", "ao abrir conexão - " + urlConnection.getResponseCode());
         } finally {
             if(urlConnection != null){
                 urlConnection.disconnect();
@@ -85,6 +86,20 @@ public class QueryUtils {
         }
 
         return json;
+    }
+
+    private static HttpURLConnection getConnection(URL url) throws IOException {
+        HttpURLConnection urlConnection = null;
+
+        urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("GET");
+        //pesquisar sobre
+        urlConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:221.0) Gecko/20100101 Firefox/31.0");
+        urlConnection.setReadTimeout(10000);
+        urlConnection.setConnectTimeout(15000);
+        urlConnection.connect();
+
+        return urlConnection;
     }
 
     private static String getString(InputStream stream) throws IOException {
@@ -114,13 +129,65 @@ public class QueryUtils {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject obj = array.getJSONObject(i);
                 list.add(new Objeto()
+                        .setImg(getImg(obj.getString("urlToImage")))
                         .setTitulo(obj.getString("title"))
                         .setDesc(obj.getString("description"))
                 );
             }
         } catch (JSONException e) {
             Log.e("Erro JSON: ", "" + e.getMessage());
+        } catch (IOException e) {
+            Log.e("Erro: ", "ao processar imagens - " + e.getMessage());
         }
         return list;
+    }
+
+    private static Bitmap getImg(String urlImg) throws IOException{
+        URL url = getUrl(urlImg);
+        Bitmap img = null;
+
+        HttpURLConnection urlConnection = null;
+
+        try{
+            urlConnection = getConnection(url);
+            img = restoreImg(urlConnection);
+            Log.e("TAMANHO FINAL: ", "LARGURA - "+img.getWidth()+" | ALTURA - "+img.getHeight());
+        } catch (IOException e) {
+            Log.e("Erro: ", "ao obter imagem - "+urlConnection.getResponseCode());
+        } finally {
+            if(urlConnection != null){
+                urlConnection.disconnect();
+            }
+        }
+
+        return img;
+    }
+
+    private static Bitmap restoreImg(HttpURLConnection urlConnection) throws IOException{
+
+        Bitmap img = BitmapFactory.decodeStream(urlConnection.getInputStream());
+
+        img = getTamanhoBitmap(img, 200, 100);
+
+        return img;
+    }
+
+    private static Bitmap getTamanhoBitmap(Bitmap img, int recLargura, int recAltura){
+        int largura = img.getWidth();
+        int altura = img.getHeight();
+        int mult = 1;
+
+        Log.e("TAMANHO INICIAL: ", "LARGURA - "+largura+" | ALTURA - "+altura);
+        if(largura > recLargura || altura > recAltura){
+            int metadeLargura = largura / 2;
+            int metadeAltura = altura / 2;
+            Log.e("TAMANHO MININO: ", "LARGURA - "+recLargura+" | ALTURA - "+recAltura);
+            while((metadeLargura / mult) >= recLargura && (metadeAltura / mult) >= recAltura){
+                mult *= 2;
+                Log.e("DIVISOR DE TAMANHO: ", ""+mult);
+            }
+        }
+
+        return Bitmap.createScaledBitmap(img, largura/mult, altura/mult, false);
     }
 }

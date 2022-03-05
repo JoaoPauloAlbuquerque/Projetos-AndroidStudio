@@ -52,7 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         }
 
         public void construir(Objeto obj){
-            img.setImageResource(obj.getImg());
+            img.setImageBitmap(obj.getImg());
             titulo.setText(obj.getTitulo());
             desc.setText(obj.getDesc());
         }
