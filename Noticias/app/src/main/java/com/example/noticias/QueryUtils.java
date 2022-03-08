@@ -164,11 +164,8 @@ public class QueryUtils {
     }
 
     private static Bitmap restoreImg(HttpURLConnection urlConnection) throws IOException{
-
         Bitmap img = BitmapFactory.decodeStream(urlConnection.getInputStream());
-
         img = getTamanhoBitmap(img, 200, 100);
-
         return img;
     }
 

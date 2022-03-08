@@ -1,0 +1,2 @@
+PRAGMA TABLE_INFO(nome_tablea); - mostra infos sobre a tabela
+.mode box - altera o modo de visualização das tabelas
