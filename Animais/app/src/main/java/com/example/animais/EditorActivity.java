@@ -15,21 +15,21 @@ import android.widget.Spinner;
 
 public class EditorActivity extends AppCompatActivity {
 
-    /** EditText field to enter the pet's name */
+    /** Campo EditText para inserir o nome do animal de estimação */
     private EditText mNameEditText;
 
-    /** EditText field to enter the pet's breed */
+    /** Campo EditText para inserir a raça do animal */
     private EditText mBreedEditText;
 
-    /** EditText field to enter the pet's weight */
+    /** Campo EditText para inserir o peso do animal */
     private EditText mWeightEditText;
 
-    /** EditText field to enter the pet's gender */
+    /** Campo EditText para inserir o sexo do animal */
     private Spinner mGenderSpinner;
 
     /**
-     * Gender of the pet. The possible values are:
-     * 0 for unknown gender, 1 for male, 2 for female.
+     * Gênero do animal de estimação. Os valores possíveis são:
+     * 0 para sexo desconhecido, 1 para masculino, 2 para feminino.
      */
     private int mGender = 0;
 
@@ -38,7 +38,7 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        // Find all relevant views that we will need to read user input from
+        // Encontre todas as visualizações relevantes das quais precisaremos ler a entrada do usuário
         mNameEditText = (EditText) findViewById(R.id.edit_pet_name);
         mBreedEditText = (EditText) findViewById(R.id.edit_pet_breed);
         mWeightEditText = (EditText) findViewById(R.id.edit_pet_weight);
@@ -49,67 +49,67 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     /**
-     * Setup the dropdown spinner that allows the user to select the gender of the pet.
+     * Configure o spinner suspenso que permite ao usuário selecionar o sexo do animal de estimação.
      */
     private void setupSpinner() {
-        // Create adapter for spinner. The list options are from the String array it will use
-        // the spinner will use the default layout
+        // Crie adaptador para spinner. As opções da lista são do array String que ele usará
+        // o spinner usará o layout padrão
         ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.array_gender_options, android.R.layout.simple_spinner_item);
 
-        // Specify dropdown layout style - simple list view with 1 item per line
+        // Especifique o estilo de layout suspenso - exibição de lista simples com 1 item por linha
         genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
-        // Apply the adapter to the spinner
+        // Aplique o adaptador ao spinner
         mGenderSpinner.setAdapter(genderSpinnerAdapter);
 
-        // Set the integer mSelected to the constant values
+        // Defina o inteiro mSelected para os valores constantes
         mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals(getString(R.string.gender_male))) {
-                        mGender = 1; // Male
+                        mGender = 1; // masculino
                     } else if (selection.equals(getString(R.string.gender_female))) {
-                        mGender = 2; // Female
+                        mGender = 2; // feminino
                     } else {
-                        mGender = 0; // Unknown
+                        mGender = 0; // desconhecido
                     }
                 }
             }
 
-            // Because AdapterView is an abstract class, onNothingSelected must be defined
+            // Como AdapterView é uma classe abstrata, onNothingSelected deve ser definido
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                mGender = 0; // Unknown
+                mGender = 0; // desconhecido
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu options from the res/menu/menu_editor.xml file.
-        // This adds menu items to the app bar.
+        // Infle as opções de menu do arquivo res/menu/menu_editor.xml.
+        // Isso adiciona itens de menu à barra de aplicativos.
         getMenuInflater().inflate(R.menu.menu_editor, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // User clicked on a menu option in the app bar overflow menu
+        // O usuário clicou em uma opção de menu no menu flutuante da barra de aplicativos
         switch (item.getItemId()) {
-            // Respond to a click on the "Save" menu option
+            // Responda a um clique na opção de menu "Salvar"
             case R.id.action_save:
                 // Do nothing for now
                 return true;
-            // Respond to a click on the "Delete" menu option
+            // Responda a um clique na opção de menu "Excluir"
             case R.id.action_delete:
                 // Do nothing for now
                 return true;
-            // Respond to a click on the "Up" arrow button in the app bar
+            // Responda a um clique no botão de seta "Para cima" na barra de aplicativos
             case android.R.id.home:
-                // Navigate back to parent activity (CatalogActivity)
+                // Navegue de volta para a atividade pai (CatalogActivity)
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
         }

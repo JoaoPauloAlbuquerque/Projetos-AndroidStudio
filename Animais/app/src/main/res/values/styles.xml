@@ -7,14 +7,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Theme of the editor -->
+    <!-- Tema do editor -->
     <style name="EditorTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/editorColorPrimary</item>
         <item name="colorPrimaryDark">@color/editorColorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Style for a category in the editor -->
+    <!-- Estilo para uma categoria no editor -->
     <style name="CategoryStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
@@ -25,7 +25,7 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
-    <!-- Style for an EditText field in the editor -->
+    <!-- Estilo para um campo EditText no editor -->
     <style name="EditorFieldStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -33,7 +33,7 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
-    <!-- Style for the measurement units for an EditText field in the editor -->
+    <!-- Estilo para as unidades de medida de um campo EditText no editor -->
     <style name="EditorUnitsStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>

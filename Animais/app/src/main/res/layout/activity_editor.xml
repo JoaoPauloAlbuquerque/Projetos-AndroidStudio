@@ -8,7 +8,7 @@
     android:padding="@dimen/activity_margin"
     tools:context=".EditorActivity">
 
-    <!-- Overview category -->
+    <!-- Categoria de visão geral -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:text="@string/category_overview"
             style="@style/CategoryStyle" />
 
-        <!-- Input fields -->
+        <!-- Campos de entrada -->
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -27,14 +27,14 @@
             android:paddingLeft="4dp"
             android:orientation="vertical">
 
-            <!-- Name field -->
+            <!-- Campo de nome -->
             <EditText
                 android:id="@+id/edit_pet_name"
                 android:hint="@string/hint_pet_name"
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle" />
 
-            <!-- Breed field -->
+            <!-- Campo de raça -->
             <EditText
                 android:id="@+id/edit_pet_breed"
                 android:hint="@string/hint_pet_breed"
@@ -43,7 +43,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Gender category -->
+    <!-- Categoria de gênero -->
     <LinearLayout
         android:id="@+id/container_gender"
         android:layout_width="match_parent"
@@ -55,14 +55,14 @@
             android:text="@string/category_gender"
             style="@style/CategoryStyle" />
 
-        <!-- Input field -->
+        <!-- Campo de entrada -->
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <!-- Gender drop-down spinner -->
+            <!-- Spinner suspenso de gênero -->
             <Spinner
                 android:id="@+id/spinner_gender"
                 android:layout_height="48dp"
@@ -72,7 +72,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Measurement category -->
+    <!-- Categoria de medição -->
     <LinearLayout
         android:id="@+id/container_measurement"
         android:layout_width="match_parent"
@@ -84,21 +84,21 @@
             android:text="@string/category_measurement"
             style="@style/CategoryStyle" />
 
-        <!-- Input fields -->
+        <!-- Campos de entrada -->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Weight field -->
+            <!-- Campo de peso -->
             <EditText
                 android:id="@+id/edit_pet_weight"
                 android:hint="@string/hint_pet_weight"
                 android:inputType="number"
                 style="@style/EditorFieldStyle" />
 
-            <!-- Units for weight (kg) -->
+            <!-- Unidades de peso (kg) -->
             <TextView
                 android:id="@+id/label_weight_units"
                 android:text="@string/unit_pet_weight"
