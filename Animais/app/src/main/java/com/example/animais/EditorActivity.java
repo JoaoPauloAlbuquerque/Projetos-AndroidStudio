@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.animais.data.PetContract.PetEntry;
+
 public class EditorActivity extends AppCompatActivity {
 
     /** Campo EditText para inserir o nome do animal de estimação */
@@ -70,11 +72,11 @@ public class EditorActivity extends AppCompatActivity {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals(getString(R.string.gender_male))) {
-                        mGender = 1; // masculino
+                        mGender = PetEntry.GENDER_MALE; // masculino
                     } else if (selection.equals(getString(R.string.gender_female))) {
-                        mGender = 2; // feminino
+                        mGender = PetEntry.GENDER_FEMALE; // feminino
                     } else {
-                        mGender = 0; // desconhecido
+                        mGender = PetEntry.GENDER_UNKNOWN; // desconhecido
                     }
                 }
             }
@@ -101,11 +103,11 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Responda a um clique na opção de menu "Salvar"
             case R.id.action_save:
-                // Do nothing for now
+                // Não faça nada por enquanto
                 return true;
             // Responda a um clique na opção de menu "Excluir"
             case R.id.action_delete:
-                // Do nothing for now
+                // Não faça nada por enquanto
                 return true;
             // Responda a um clique no botão de seta "Para cima" na barra de aplicativos
             case android.R.id.home:
