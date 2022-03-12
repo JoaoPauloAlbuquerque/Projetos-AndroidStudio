@@ -3,8 +3,12 @@ package com.example.animais;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,8 +16,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.animais.data.PetContract.PetEntry;
+import com.example.animais.data.PetDbHelper;
 
 public class EditorActivity extends AppCompatActivity {
 
@@ -29,6 +35,8 @@ public class EditorActivity extends AppCompatActivity {
     /** Campo EditText para inserir o sexo do animal */
     private Spinner mGenderSpinner;
 
+    private PetDbHelper mDbHelper;
+
     /**
      * Gênero do animal de estimação. Os valores possíveis são:
      * 0 para sexo desconhecido, 1 para masculino, 2 para feminino.
@@ -39,6 +47,8 @@ public class EditorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+
+        mDbHelper = new PetDbHelper(this);
 
         // Encontre todas as visualizações relevantes das quais precisaremos ler a entrada do usuário
         mNameEditText = (EditText) findViewById(R.id.edit_pet_name);
@@ -89,6 +99,66 @@ public class EditorActivity extends AppCompatActivity {
         });
     }
 
+    private void displayDatabaseInfo() {
+        // Create and/or open a database to read from it
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+        // Perform this raw SQL query "SELECT * FROM pets"
+        // to get a Cursor that contains all rows from the pets table.
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PetEntry.TABLE_NAME, null);
+        try {
+            // Display the number of rows in the Cursor (which reflects the number of rows in the
+            // pets table in the database).
+            //TextView displayView = (TextView) findViewById(R.id.text_view_pet);
+            Log.e("contagem", ""+cursor.getCount());
+            CatalogActivity.displayView.setText("Number of rows in pets database table: " + cursor.getCount());
+        } finally {
+            // Always close the cursor when you're done reading from it. This releases all its
+            // resources and makes it invalid.
+            cursor.close();
+        }
+    }
+
+    private void insertData(){
+        EditText editName = (EditText) findViewById(R.id.edit_pet_name);
+        EditText editBreed = (EditText) findViewById(R.id.edit_pet_breed);
+        EditText editWeight = (EditText) findViewById(R.id.edit_pet_weight);
+        Spinner spinnerGender = (Spinner) findViewById(R.id.spinner_gender);
+
+        String name = editName.getText().toString();
+        String breed = editBreed.getText().toString();
+        int weight = Integer.parseInt(editWeight.getText().toString());
+        String stringGender = spinnerGender.getSelectedItem().toString();
+        Log.e("SPINNER", "intem selecionado - " + stringGender);
+        int gender;
+        if(stringGender.equals(getString(R.string.gender_male))){
+            gender = 1;
+        } else if(stringGender.equals(getString(R.string.gender_female))){
+            gender = 2;
+        } else {
+            gender = 0;
+        }
+
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(PetEntry.COLUMN_PET_NAME, name);
+        values.put(PetEntry.COLUMN_PET_BREED, breed);
+        values.put(PetEntry.COLUMN_PET_GENDER, gender);
+        values.put(PetEntry.COLUMN_PET_WEIGHT, weight);
+
+        db.insert(PetEntry.TABLE_NAME, null, values);
+
+        reset(editName, editBreed, editWeight, spinnerGender);
+    }
+
+    private void reset(EditText name, EditText breed, EditText weight, Spinner gender){
+        name.setText("");
+        breed.setText("");
+        weight.setText("");
+        gender.setSelection(0);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Infle as opções de menu do arquivo res/menu/menu_editor.xml.
@@ -103,7 +173,8 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Responda a um clique na opção de menu "Salvar"
             case R.id.action_save:
-                // Não faça nada por enquanto
+                insertData();
+                displayDatabaseInfo();
                 return true;
             // Responda a um clique na opção de menu "Excluir"
             case R.id.action_delete:
