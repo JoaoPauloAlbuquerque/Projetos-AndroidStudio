@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.animais.data.PetContract.PetEntry;
 import com.example.animais.data.PetDbHelper;
@@ -27,6 +28,8 @@ public class CatalogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
+        Log.e("STATUS", "onCreate()");
+
         mDbHelper = new PetDbHelper(this);
         displayView = (TextView) findViewById(R.id.text_view_pet);
 
@@ -39,7 +42,43 @@ public class CatalogActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("STATUS", "onStart()");
         displayDatabaseInfo();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("STATUS", "onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("STATUS", "onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("STATUS", "onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("STATUS", "onDestroy()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("STATUS", "onRestart()");
     }
 
     private void displayDatabaseInfo() {

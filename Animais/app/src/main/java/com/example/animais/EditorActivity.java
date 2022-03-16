@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.animais.data.PetContract.PetEntry;
 import com.example.animais.data.PetDbHelper;
@@ -99,36 +100,13 @@ public class EditorActivity extends AppCompatActivity {
         });
     }
 
-    private void displayDatabaseInfo() {
-        // Create and/or open a database to read from it
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+    private void insertPets(){
+        String name = mNameEditText.getText().toString().trim();
+        String breed = mBreedEditText.getText().toString().trim();
+        String stringWeight = mWeightEditText.getText().toString().trim();
+        String stringGender = mGenderSpinner.getSelectedItem().toString();
+        int weight = Integer.parseInt(stringWeight);
 
-        // Perform this raw SQL query "SELECT * FROM pets"
-        // to get a Cursor that contains all rows from the pets table.
-        Cursor cursor = db.rawQuery("SELECT * FROM " + PetEntry.TABLE_NAME, null);
-        try {
-            // Display the number of rows in the Cursor (which reflects the number of rows in the
-            // pets table in the database).
-            //TextView displayView = (TextView) findViewById(R.id.text_view_pet);
-            Log.e("contagem", ""+cursor.getCount());
-            CatalogActivity.displayView.setText("Number of rows in pets database table: " + cursor.getCount());
-        } finally {
-            // Always close the cursor when you're done reading from it. This releases all its
-            // resources and makes it invalid.
-            cursor.close();
-        }
-    }
-
-    private void insertData(){
-        EditText editName = (EditText) findViewById(R.id.edit_pet_name);
-        EditText editBreed = (EditText) findViewById(R.id.edit_pet_breed);
-        EditText editWeight = (EditText) findViewById(R.id.edit_pet_weight);
-        Spinner spinnerGender = (Spinner) findViewById(R.id.spinner_gender);
-
-        String name = editName.getText().toString();
-        String breed = editBreed.getText().toString();
-        int weight = Integer.parseInt(editWeight.getText().toString());
-        String stringGender = spinnerGender.getSelectedItem().toString();
         Log.e("SPINNER", "intem selecionado - " + stringGender);
         int gender;
         if(stringGender.equals(getString(R.string.gender_male))){
@@ -147,16 +125,13 @@ public class EditorActivity extends AppCompatActivity {
         values.put(PetEntry.COLUMN_PET_GENDER, gender);
         values.put(PetEntry.COLUMN_PET_WEIGHT, weight);
 
-        db.insert(PetEntry.TABLE_NAME, null, values);
+        long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);
 
-        reset(editName, editBreed, editWeight, spinnerGender);
-    }
-
-    private void reset(EditText name, EditText breed, EditText weight, Spinner gender){
-        name.setText("");
-        breed.setText("");
-        weight.setText("");
-        gender.setSelection(0);
+        if(newRowId < 0){
+            Toast.makeText(this, "Erro ao inserir pet", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Pet " + newRowId + " inserido com sucesso", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -173,8 +148,8 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Responda a um clique na opção de menu "Salvar"
             case R.id.action_save:
-                insertData();
-                displayDatabaseInfo();
+                insertPets();
+                finish();
                 return true;
             // Responda a um clique na opção de menu "Excluir"
             case R.id.action_delete:
