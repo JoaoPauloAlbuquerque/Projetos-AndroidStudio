@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         recycler = findViewById(R.id.recycler);
         list = getIntent().getParcelableArrayListExtra("objetos");
+
+        if(list.size() < 1){
+            TextView txt = (TextView) findViewById(R.id.textview_tamanho_list_zero);
+            txt.setText("Não foi encontrado nenhum terremoto");
+        }
 
         adapter = new Adapter(list, this.getApplicationContext());
         recycler.setAdapter(adapter);

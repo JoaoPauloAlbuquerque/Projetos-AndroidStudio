@@ -44,11 +44,21 @@ public class QueryUtils {
         } catch (IOException e) {
             Log.e("Erro: ", "ao fechar conexão - " + e);
         }
+
+        if(json == null){
+            return null;
+        }
+
         //artibuindo à lista o Array de Objetos
         ArrayList<Objeto> list = getList(json);
-        Log.e("STATUS: ", "criou a lista de objetos");
 
+        if(list == null){
+            return null;
+        }
+        
+        Log.e("STATUS: ", "criou a lista de objetos");
         return list;
+
     }
 
     /**
@@ -62,16 +72,20 @@ public class QueryUtils {
     private static String getJson(String stringUrl) throws IOException {
         //criando a URL
         URL url = getUrl(stringUrl);
+        if(url == null){
+            return null;
+        }
         //variáveis para poder configurar a conexão
         String jsonResponse = "";
+        Log.e("URL", url.toString());
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
             //tipo de retorno "GET" para a API
             urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            //urlConnection.setReadTimeout(20000 /* milliseconds */);
+            //urlConnection.setConnectTimeout(20000 /* milliseconds */);
             urlConnection.connect();
             Log.e("STATUS: ", "criou conexão");
             //esta variável recebe um fluxo de bytes
@@ -80,7 +94,8 @@ public class QueryUtils {
             jsonResponse = getStringJson(inputStream);
             Log.e("STATUS: ", "criou jsonResponse");
         } catch (IOException e) {
-            Log.e("ERRO AO CONECTAR: ", "sem acesso à internet" + e);
+            Log.e("ERRO AO CONECTAR: ", "sem acesso à internet " + e);
+            return null;
         } finally {
             //finalizando as conexões
             if (urlConnection != null) {
@@ -119,6 +134,7 @@ public class QueryUtils {
      * @throws IOException
      */
     private static String getStringJson(InputStream inputStream) throws IOException {
+        Log.e("STATUS", "getStringJson()");
         //StringBuilder ajusta o próprio tamanho para poder caber o conteúdo da variável
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -171,8 +187,8 @@ public class QueryUtils {
             }
         } catch (JSONException e) {
             Log.e("ERRO JSON: ", "" + e.getMessage());
+            return null;
         }
-
         return lista;
     }
 

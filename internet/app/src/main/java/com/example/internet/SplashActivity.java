@@ -80,7 +80,7 @@ public class SplashActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<ArrayList<Objeto>> loader, ArrayList<Objeto> data) {
         Log.e("passou: ", "onLoaderFinished()");
         pDialog.dismiss();
-        if(data == null || data.size() == 0){
+        if(data == null){
             iniNotConnection();
             return;
         }
