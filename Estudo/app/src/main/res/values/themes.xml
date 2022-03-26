@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Estudo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#12867E</item>
-        <item name="colorPrimaryVariant">#12867E</item>
+        <item name="colorPrimary">#0000FF</item>
+        <item name="colorPrimaryVariant">#0000FF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

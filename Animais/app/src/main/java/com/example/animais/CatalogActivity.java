@@ -85,6 +85,7 @@ public class CatalogActivity extends AppCompatActivity {
         // Create and/or open a database to read from it
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
+        //Selecionando os nomes das colunas para passar como parâmetro na consulta
         String[] projection = {PetEntry._ID,
                 PetEntry.COLUMN_PET_NAME,
                 PetEntry.COLUMN_PET_BREED,
@@ -92,6 +93,7 @@ public class CatalogActivity extends AppCompatActivity {
                 PetEntry.COLUMN_PET_WEIGHT
         };
 
+        //Executando a consulta no banco de dados
         Cursor cursor = db.query(PetEntry.TABLE_NAME,
                 projection,
                 null,
@@ -118,20 +120,25 @@ public class CatalogActivity extends AppCompatActivity {
                     PetEntry.COLUMN_PET_WEIGHT + "\n"
             );
 
+            //Recuperando os ID's das colunas resultantes da consulta
             int idColumnIndex = cursor.getColumnIndex(PetEntry._ID);
             int nameColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_NAME);
             int breedColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_BREED);
             int genderColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_GENDER);
             int weightColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_WEIGHT);
 
+            //Loop para percorrer o objeto cursor.
+            //Chamando o método moveToNext() ele vai sempre para a
+            //próxima linha do cursor (se existir)
             while(cursor.moveToNext()){
-
+                //Recuperando os valores da linha selecionada
                 int currentId = cursor.getInt(idColumnIndex);
                 String currentName = cursor.getString(nameColumnIndex);
                 String currentBreed = cursor.getString(breedColumnIndex);
                 int currentGender = cursor.getInt(genderColumnIndex);
                 int currentWeight = cursor.getInt(weightColumnIndex);
 
+                //Imprimindo os valores na tela
                 displayView.append("\n" + currentId + " - " +
                         currentName + " - " +
                         currentBreed + " - " +
