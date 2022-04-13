@@ -102,17 +102,18 @@ public class CatalogActivity extends AppCompatActivity {
                 null,
                 null
         );
-        /**
-         * cursor.moveToFirst() - move o cursor para a primeira linha do resultado
-         * cursor.moveToLast() - move o cursor para a ultima linha do resultado
-         * cursor.moveToPosition(2) - move o cursor para uma linha expecífica, no exemplo, move para a terceira linha
-         * cursor.moveToNext() - move o cursor para a próxima linha
-        */
+
+
+        // cursor.moveToFirst() - move o cursor para a primeira linha do resultado
+        // cursor.moveToLast() - move o cursor para a ultima linha do resultado
+        // cursor.moveToPosition(2) - move o cursor para uma linha expecífica, no exemplo, move para a terceira linha
+        // cursor.moveToNext() - move o cursor para a próxima linha
+
         try {
             // Display the number of rows in the Cursor (which reflects the number of rows in the
             // pets table in the database).
             //TextView displayViw = (TextView) findViewById(R.id.text_view_pet);
-            displayView.setText("The pets table contains " + cursor.getCount() + " pets.\n\n");
+            displayView.setText("A tablea de pets contém " + cursor.getCount() + " pets.\n\n");
             displayView.append(PetEntry._ID + " - " +
                     PetEntry.COLUMN_PET_NAME + " - " +
                     PetEntry.COLUMN_PET_BREED + " - " +
