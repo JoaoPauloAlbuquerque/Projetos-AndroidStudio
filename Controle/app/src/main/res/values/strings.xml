@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Controle</string>
+    <string name="total">Total à pagar</string>
+    <string name="total_ficticio">2000</string>
+    <string name="cifrao">R$</string>
+    <string name="gasto">Gasto este mês</string>
+    <string name="recyclerview_item_onde">Onde</string>
+    <string name="recyclerview_item_data">Data</string>
+    <string name="recyclerview_item_parcelas">Parcelas</string>
+    <string name="recyclerview_item_valor_parcelas">Valor</string>
+</resources>

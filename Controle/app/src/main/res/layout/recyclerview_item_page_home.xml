@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/recyclerview_item_onde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recyclerview_item_onde"
+        android:layout_alingParentStart="true"
+        android:layout_alignParenteTop="true"
+        android:textSize="16sp"
+        android:textColor="?attr/color_text_corp"/>
+
+    <TextView
+        android:id="@+id/recyclerview_item_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recyclerview_item_data"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParenteTop="true"
+        android:textSize="16sp"
+        android:textColor="?attr/color_text_corp"/>
+
+    <TextView
+        android:id="@+id/recyclerview_item_parcelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recyclerview_item_data"
+        android:layout_alignParentEnd="true"
+        android:text="@string/recyclerview_item_parcelas"
+        android:textColor="?attr/color_text_parcelas"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/recyclerview_item_valor_parcelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recyclerview_item_onde"
+        android:layout_alignParentStart="true"
+        android:text="@string/recyclerview_item_valor_parcelas"
+        android:textColor="?attr/color_text_valor_parcelas"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/recyclerview_item_valor_parcelas"
+        android:background="?attr/color_text_parcelas"
+        android:layout_marginVertical="8dp"/>
+
+</RelativeLayout>

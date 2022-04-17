@@ -83,7 +83,7 @@ public class CatalogActivity extends AppCompatActivity {
 
     private void displayDatabaseInfo() {
         // Create and/or open a database to read from it
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        // SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         //Selecionando os nomes das colunas para passar como parâmetro na consulta
         String[] projection = {PetEntry._ID,
@@ -94,15 +94,16 @@ public class CatalogActivity extends AppCompatActivity {
         };
 
         //Executando a consulta no banco de dados
-        Cursor cursor = db.query(PetEntry.TABLE_NAME,
+        /*Cursor cursor = db.query(PetEntry.TABLE_NAME,
                 projection,
                 null,
                 null,
                 null,
                 null,
                 null
-        );
+        );*/
 
+        Cursor cursor = getContentResolver().query(PetEntry.CONTENT_URI, projection, null, null, null);
 
         // cursor.moveToFirst() - move o cursor para a primeira linha do resultado
         // cursor.moveToLast() - move o cursor para a ultima linha do resultado
