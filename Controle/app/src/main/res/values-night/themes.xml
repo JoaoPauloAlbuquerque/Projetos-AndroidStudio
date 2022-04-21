@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Controle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">#000315</item>
+        <item name="colorPrimaryVariant">#000315</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,13 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
-        <attr name="background_app">#001236</attr>
-        <attr name="color_blue">#000315</attr>
-        <attr name="color_text_header">#DDDDDD</attr>
-        <attr name="color_text_corp">#DDDDDD</attr>
-        <attr name="color_text_parcelas">#4B4B4B</attr>
-        <attr name="color_text_valor_parcelas">#FF3D3D</attr>
-        <attr name="color_floatingactionbutton">#2862A8</attr>
+        <item name="background_app">#001236</item>
+        <item name="color_blue">#003F8B</item>
+        <item name="color_text_header">#DDDDDD</item>
+        <item name="color_text_corp">#DDDDDD</item>
+        <item name="color_text_parcelas">#4B4B4B</item>
+        <item name="color_text_valor_parcelas">#FF3D3D</item>
+        <item name="color_floatingactionbutton">#2862A8</item>
 
     </style>
 </resources>

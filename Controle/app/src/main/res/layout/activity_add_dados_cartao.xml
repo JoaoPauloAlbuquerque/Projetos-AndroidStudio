@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddDadosCartaoActivity">
+
+    <TextView
+        android:id="@+id/add_dados_cartao_txt_dia_pagamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_dados_cartao_dia_pagamento"
+        android:textColor="?attr/color_text_corp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/add_dados_cartao_edit_dia_pagamento"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/add_dados_cartao_edit_dia_pagamento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:inputType="text"
+        android:textColor="?attr/color_text_corp"
+        android:textSize="20sp"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintLeft_toRightOf="@id/add_dados_cartao_txt_dia_pagamento"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/add_dados_cartao_txt_dia_fechamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_dados_cartao_dia_fechamento"
+        android:textColor="?attr/color_text_corp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/add_dados_cartao_edit_dia_fechamento"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_dados_cartao_txt_dia_pagamento"/>
+
+    <EditText
+        android:id="@+id/add_dados_cartao_edit_dia_fechamento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:inputType="text"
+        android:textColor="?attr/color_text_corp"
+        android:textSize="20sp"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintLeft_toRightOf="@id/add_dados_cartao_txt_dia_fechamento"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_dados_cartao_edit_dia_pagamento"/>
+
+    <Button
+        android:id="@+id/add_dados_cartao_button_ok"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="26dp"
+        android:backgroundTint="?attr/color_blue"
+        android:text="@string/ok"
+        android:textColor="?attr/color_text_header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_dados_cartao_edit_dia_fechamento" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

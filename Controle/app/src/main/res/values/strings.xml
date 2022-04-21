@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Controle</string>
-    <string name="total">Total à pagar</string>
+
+    <string name="total">Total gasto</string>
     <string name="total_ficticio">2000</string>
     <string name="cifrao">R$</string>
     <string name="gasto">Gasto este mês</string>
@@ -8,4 +9,13 @@
     <string name="recyclerview_item_data">Data</string>
     <string name="recyclerview_item_parcelas">Parcelas</string>
     <string name="recyclerview_item_valor_parcelas">Valor</string>
+    <string name="add_compra_txt_onde_comprou">Onde comprou:</string>
+    <string name="add_compra_txt_quanto_pagou">Quanto pagou:</string>
+    <string name="add_compra_txt_quanti_parcelas">Quantidade parcelas</string>
+    <string name="add_compra_txt_data">Data da compra</string>
+    <string name="ok">OK</string>
+    <string name="menu_title_config">Configurações</string>
+    <string name="add_dados_cartao_dia_pagamento">Dia de pagamento:</string>
+    <string name="add_dados_cartao_dia_fechamento">Dia fechamento:</string>
+
 </resources>

@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/drawable/ic_add.xml" value="0.287" />
-        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/drawable/shape_card_header.xml" value="0.287" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/drawable/ic_calendar.xml" value="0.278" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/drawable/shape_card_header.xml" value="0.278" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/layout/activity_add_compra.xml" value="0.33" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/layout/activity_add_dados_cartao.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/layout/activity_main.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/layout/recyclerview_item_page_home.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/JoaoPaulo/Documents/AndroidStudioPrejects/Controle/app/src/main/res/menu/menu_principal.xml" value="0.33958333333333335" />
       </map>
     </option>
   </component>
