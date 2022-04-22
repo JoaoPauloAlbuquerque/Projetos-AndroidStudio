@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.controle.R;
 import com.example.controle.objetos.Objeto;
+import com.example.controle.utils.CalcUtils;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         private void biulder(Objeto obj){
             onde.setText(obj.getDescricao());
             data.setText(obj.getData());
-            String v = "R$" + obj.getValorCompra();
+            String v = "R$" + CalcUtils.doubleFormat(obj.getValorCompra());
             String p = obj.getQuantParcelas() + "x";
             valor.setText(v);
             quantParcela.setText(p);

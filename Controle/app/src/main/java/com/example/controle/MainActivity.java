@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -41,23 +39,23 @@ public class MainActivity extends AppCompatActivity {
         DbHelp help = new DbHelp(this);
         SQLiteDatabase db = help.getReadableDatabase();
 
-        while(true) {
-            Cursor cursor = db.query(DadosCartaoEntry.NOME_TABELA,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null
-            );
-            if (cursor.getCount() == 0) {
-                Toast.makeText(this, "ZERO", Toast.LENGTH_SHORT).show();
+        String[] colunas = {DadosCartaoEntry.COLUNA_DIA_PAGAME,
+                DadosCartaoEntry.COLUNA_DIA_FECHAME
+        };
 
-                Intent i = new Intent(MainActivity.this, AddDadosCartaoActivity.class);
-                startActivity(i);
-            } else {
-                break;
-            }
+        Cursor cursor = db.query(DadosCartaoEntry.NOME_TABELA,
+                colunas,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        if (cursor.getCount() == 0) {
+            Toast.makeText(this, "ZERO", Toast.LENGTH_SHORT).show();
+
+            Intent i = new Intent(MainActivity.this, AddDadosCartaoActivity.class);
+            startActivity(i);
         }
     }
 
@@ -75,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static void updateUi(Objeto obj){
+    public static void updateUi(Objeto obj) {
         myAdapter.list.add(0, obj);
         myAdapter.notifyItemInserted(0);
-        valorTotalGasto.setText(String.valueOf(CalcUtils.calcularTotalGasto(myAdapter.list)));
+        valorTotalGasto.setText(CalcUtils.doubleFormat(CalcUtils.calcularTotalGasto(myAdapter.list)));
     }
 
-    private void iniComponents(){
+    private void iniComponents() {
         this.recyclerView = findViewById(R.id.recycler_view);
         this.valorTotalGasto = findViewById(R.id.valor_total);
         floatingActionButton = findViewById(R.id.floating_action_button);
@@ -91,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
         this.myAdapter = new MyAdapter(this.list);
     }
 
-    private void configureElementosIniciais(){
+    private void configureElementosIniciais() {
         this.recyclerView.setAdapter(myAdapter);
         this.valorTotalGasto.setText(String.valueOf(CalcUtils.calcularTotalGasto(this.list)));
     }
 
     @NonNull
-    private List<Objeto> mostrarInfo(){
+    private List<Objeto> mostrarInfo() {
         SQLiteDatabase db = mDbHelp.getReadableDatabase();
         List<Objeto> list = new ArrayList<>();
 
@@ -115,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
                 null,
                 DadosCompraEntry._ID + " DESC"
         );
-        try{
+        try {
             list = this.getListTableDadosCompra(cursor);
-        } catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, "Erro ao buscar dados", Toast.LENGTH_SHORT).show();
         } finally {
             cursor.close();
@@ -125,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
         return list;
     }
 
-    private List<Objeto> getListTableDadosCompra(Cursor cursor) throws Exception{
+    private List<Objeto> getListTableDadosCompra(Cursor cursor) throws Exception {
         List<Objeto> list = new ArrayList<>();
         int idDescricao = cursor.getColumnIndex(DadosCompraEntry.COLUNA_DESCRICAO);
         int idDadaCompra = cursor.getColumnIndex(DadosCompraEntry.COLUNA_DATA_COMPRA);
         int idValorCompra = cursor.getColumnIndex(DadosCompraEntry.COLUNA_VALOR_COMPRA);
         int idParcelas = cursor.getColumnIndex(DadosCompraEntry.COLUNA_PARCELAS);
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             list.add(new Objeto().setDescricao(cursor.getString(idDescricao))
                     .setData(cursor.getString(idDadaCompra))
                     .setValorCompra(Double.parseDouble(cursor.getString(idValorCompra)))
@@ -151,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_item_config) {
             Toast.makeText(this, "configuração", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this, AddDadosCartaoActivity.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -2,12 +2,14 @@ package com.example.controle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.controle.dados.DadosContract.*;
 import com.example.controle.dados.DbHelp;
@@ -34,8 +36,18 @@ public class AddDadosCartaoActivity extends AppCompatActivity {
                 int diaPagamento = Integer.parseInt(editDiaPagamento.getText().toString());
                 int diaFechamento = Integer.parseInt(editDiaFechamento.getText().toString());
 
-                //CRIAR O MÉTODO UPDATE
+                ContentValues valores = new ContentValues();
+                valores.put(DadosCartaoEntry.COLUNA_DIA_PAGAME, diaPagamento);
+                valores.put(DadosCartaoEntry.COLUNA_DIA_FECHAME, diaFechamento);
 
+                long newRowId = db.insert(DadosCartaoEntry.NOME_TABELA, null, valores);
+
+                if(newRowId != -1) {
+                    Toast.makeText(AddDadosCartaoActivity.this, "Adicionado com sucesso", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddDadosCartaoActivity.this, "Erro ao adicionar datas", Toast.LENGTH_SHORT).show();
+                }
+                AddDadosCartaoActivity.this.finish();
             }
         });
         SQLiteDatabase db = help.getReadableDatabase();
