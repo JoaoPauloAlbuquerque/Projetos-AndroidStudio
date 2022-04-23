@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,9 @@ import com.example.animais.data.PetContract.PetEntry;
  * ultilizando a tag <provider>.
  */
 public class PetProvider extends ContentProvider {
+
+    /** Tag para as mensagens de log */
+    public static final String LOG_TAG = PetProvider.class.getSimpleName();
 
     // Código de correspondência de URI para o URI de conteúdo da tabela de animais de estimação
     public static final int PETS = 100;
@@ -104,7 +108,51 @@ public class PetProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        return null;
+
+        int match = sUriMatcher.match(uri);
+
+        switch(match){
+            case PETS:
+                return insertPet(uri, values);
+            default:
+                throw new IllegalArgumentException("Erro ao inserir pet no provedor: " + uri);
+        }
+    }
+
+    /**
+     * Insira um pet no banco de dados com os dados content values. Retorne o novo content URI
+     * para aquele específico registro do banco de dados.
+     */
+    private Uri insertPet(Uri uri, ContentValues values) {
+
+        SQLiteDatabase db = mDbHelp.getWritableDatabase();
+
+        String name = values.getAsString(PetEntry.COLUMN_PET_NAME);
+        if(name == null){
+            throw new IllegalArgumentException("Pet requires a name");
+        }
+
+        Integer gender = values.getAsInteger(PetEntry.COLUMN_PET_GENDER);
+        if(gender == null || !PetEntry.isValidGender(gender)){
+            throw new IllegalArgumentException("Pet requires valid gender");
+        }
+
+        Integer weight = values.getAsInteger(PetEntry.COLUMN_PET_WEIGHT);
+        if(weight != null && weight < 0){
+            throw new IllegalArgumentException("Pet requires valid weight");
+        }
+
+        long id = db.insert(PetEntry.TABLE_NAME, null, values);
+
+        if(id != -1){
+            // Uma vez que sabemos o ID do novo registro na tabela,
+            // retornamos o novo URI com o ID concatenado ao fim dele
+            Log.e(LOG_TAG, "Pet inserido " + id + " com sucesso");
+            return ContentUris.withAppendedId(uri, id);
+        } else {
+            Log.e(LOG_TAG, "Erro ao inserir pet");
+            return null;
+        }
     }
 
     @Override

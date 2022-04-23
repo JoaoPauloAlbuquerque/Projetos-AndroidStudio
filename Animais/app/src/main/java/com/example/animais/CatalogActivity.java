@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,13 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.animais.data.PetContract.PetEntry;
-import com.example.animais.data.PetDbHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CatalogActivity extends AppCompatActivity {
 
-    private PetDbHelper mDbHelper;
-    public static TextView displayView;
+    public TextView displayView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,6 @@ public class CatalogActivity extends AppCompatActivity {
 
         Log.e("STATUS", "onCreate()");
 
-        mDbHelper = new PetDbHelper(this);
         displayView = (TextView) findViewById(R.id.text_view_pet);
 
         // Configure o FAB para abrir o EditorActivity
@@ -156,20 +153,18 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private void insertData(){
-        PetDbHelper petDbHelper = new PetDbHelper(this);
-        SQLiteDatabase db = petDbHelper.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(PetEntry.COLUMN_PET_NAME, "half");
         values.put(PetEntry.COLUMN_PET_BREED, "pastor alemao");
         values.put(PetEntry.COLUMN_PET_GENDER, PetEntry.GENDER_MALE);
         values.put(PetEntry.COLUMN_PET_WEIGHT, 14);
         
-        long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);
-        if(newRowId != -1){
-            Log.e("SQL", "linha " + newRowId + " inserida com sucesso");
+        Uri uri = getContentResolver().insert(PetEntry.CONTENT_URI, values);
+
+        if(uri != null){
+            Toast.makeText(this, getString(R.string.editor_insert_pet_successful), Toast.LENGTH_SHORT).show();
         } else {
-            Log.e("SQL", "Erro ao inserir linha");
+            Toast.makeText(this, getString(R.string.editor_insert_pet_failed), Toast.LENGTH_SHORT).show();
         }
     }
 
