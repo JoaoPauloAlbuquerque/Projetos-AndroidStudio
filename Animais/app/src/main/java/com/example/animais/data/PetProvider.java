@@ -61,6 +61,15 @@ public class PetProvider extends ContentProvider {
         return true;
     }
 
+    /**
+     *
+     * @param uri uri de entrada para saber qual o tipo de seleção deve-se ser feito
+     * @param projection as colunas da tabela
+     * @param selection essa seleção tem a mesma funcionalidade da cláusula WHERE em SQL
+     * @param selectionArgs este valor seria os argumentos da cláusula WHERE
+     * @param sortOrder seria o ORDER BY em SQL
+     * @return retorna um cursor com os dados selecionados
+     */
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
@@ -99,17 +108,39 @@ public class PetProvider extends ContentProvider {
         return cursor;
     }
 
+
+    /**
+     *
+     * @param uri uri com o tipo de dado
+     * @return retorna o tipo MIME com o tipo de dado correspondete, definido na classe PeContract().PetEntry()
+     */
+
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-        return null;
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case PETS:
+                return PetEntry.CONTENT_LIST_TYPE;
+            case PET_ID:
+                return PetEntry.CONTENT_ITEM_TYPE;
+            default:
+                throw new IllegalStateException("Unknown URI " + uri + " with match " + match);
+        }
     }
+
+    /**
+     *
+     * @param uri uri de entrada para saber onde deve ser feito a inserção
+     * @param values valores para adicionar
+     * @return retorna um uri com o CONTENT_URI com o id da linha selecionada, se o id for -1, significa que deu erro na inserção
+     */
 
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
 
-        int match = sUriMatcher.match(uri);
+        final int match = sUriMatcher.match(uri);
 
         switch(match){
             case PETS:
@@ -157,11 +188,89 @@ public class PetProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        // Obtém banco de dados com permissão de escrita
+        SQLiteDatabase db = mDbHelp.getWritableDatabase();
+
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case PETS:
+                // Deleta todos os registros que correspondem ao selection e selection args
+                return db.delete(PetEntry.TABLE_NAME, selection, selectionArgs);
+            case PET_ID:
+                // Deleta um único registro dado pelo ID na URI
+                selection = PetEntry._ID + "=?";
+                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                return db.delete(PetEntry.TABLE_NAME, selection, selectionArgs);
+            default:
+                throw new IllegalArgumentException("Deletion is not supported for " + uri);
+        }
     }
+
+    /**
+     *
+     * @param uri uri de entrada para saber onde deve ser feito o update
+     * @param values valores que ser colocados na tabela
+     * @param selection condição para os valores que vão ser alterados
+     * @param selectionArgs valores para as condições dos valores a serem alterados
+     * @return retorna o número de linhas alteradas na tabela
+     */
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case PETS:
+                return updatePet(uri, values, selection, selectionArgs);
+            case PET_ID:
+                // Para o código PET_ID, extraia o ID do URI,
+                // para que saibamos qual registro atualizar. Selection será "_id=?" and selection
+                // args será um String array contendo o atual ID.
+                selection = PetEntry._ID + "=?";
+                selectionArgs = new String[] {
+                        String.valueOf(ContentUris.parseId(uri))
+                };
+                return updatePet(uri, values, selection, selectionArgs);
+            default:
+                throw new IllegalArgumentException("Update is not supported for " + uri);
+        }
     }
+
+    /**
+     * Atualize pets no banco de dados com os content values dados. Aplique as mudanças aos registros
+     * especificados no selection e selection args (que podem ser 0 ou 1 ou mais pets).
+     * Retorne o número de registros que foram atualizados com sucesso.
+     */
+    private int updatePet(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+
+        SQLiteDatabase db = mDbHelp.getWritableDatabase();
+
+        if(values.containsKey(PetEntry.COLUMN_PET_NAME)){ // containsKey() verifica se existe uma determinada chave dentro do ContentValues
+            String nome = values.getAsString(PetEntry.COLUMN_PET_NAME);
+            if(nome == null){
+                throw new IllegalArgumentException("Pet requires a name");
+            }
+        }
+
+        if(values.containsKey(PetEntry.COLUMN_PET_GENDER)){ // containsKey() verifica se existe uma determinada chave dentro do ContentValues
+            Integer gender = values.getAsInteger(PetEntry.COLUMN_PET_GENDER);
+            if(gender == null || !PetEntry.isValidGender(gender)){
+                throw new IllegalArgumentException("Pet requires valid gender");
+            }
+        }
+
+        if(values.containsKey(PetEntry.COLUMN_PET_WEIGHT)){ // containsKey() verifica se existe uma determinada chave dentro do ContentValues
+            Integer weight = values.getAsInteger(PetEntry.COLUMN_PET_WEIGHT);
+            if(weight != null && weight < 0){
+                throw new IllegalArgumentException("Pet requires valid weight");
+            }
+        }
+
+        if(values.size() == 0){
+            return 0;
+        }
+
+
+        return db.update(PetEntry.TABLE_NAME, values, selection, selectionArgs);
+    }
+
 }
