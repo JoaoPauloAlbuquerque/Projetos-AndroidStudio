@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CatalogActivity extends AppCompatActivity {
 
-    public TextView displayView;
+    public ListView petListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ public class CatalogActivity extends AppCompatActivity {
 
         Log.e("STATUS", "onCreate()");
 
-        displayView = (TextView) findViewById(R.id.text_view_pet);
+        // Find the ListView which will be populated with the pet data
+        petListView = (ListView) findViewById(R.id.list);
 
         // Configure o FAB para abrir o EditorActivity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -107,49 +109,12 @@ public class CatalogActivity extends AppCompatActivity {
         // cursor.moveToPosition(2) - move o cursor para uma linha expecífica, no exemplo, move para a terceira linha
         // cursor.moveToNext() - move o cursor para a próxima linha
 
-        try {
-            // Display the number of rows in the Cursor (which reflects the number of rows in the
-            // pets table in the database).
-            //TextView displayViw = (TextView) findViewById(R.id.text_view_pet);
-            displayView.setText("A tablea de pets contém " + cursor.getCount() + " pets.\n\n");
-            displayView.append(PetEntry._ID + " - " +
-                    PetEntry.COLUMN_PET_NAME + " - " +
-                    PetEntry.COLUMN_PET_BREED + " - " +
-                    PetEntry.COLUMN_PET_GENDER + " - " +
-                    PetEntry.COLUMN_PET_WEIGHT + "\n"
-            );
 
-            //Recuperando os ID's das colunas resultantes da consulta
-            int idColumnIndex = cursor.getColumnIndex(PetEntry._ID);
-            int nameColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_NAME);
-            int breedColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_BREED);
-            int genderColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_GENDER);
-            int weightColumnIndex = cursor.getColumnIndex(PetEntry.COLUMN_PET_WEIGHT);
+        // Setup an Adapter to create a list item for each row of pet data in the Cursor.
+        PetCursorAdapter adapter = new PetCursorAdapter(this, cursor);
 
-            //Loop para percorrer o objeto cursor.
-            //Chamando o método moveToNext() ele vai sempre para a
-            //próxima linha do cursor (se existir)
-            while(cursor.moveToNext()){
-                //Recuperando os valores da linha selecionada
-                int currentId = cursor.getInt(idColumnIndex);
-                String currentName = cursor.getString(nameColumnIndex);
-                String currentBreed = cursor.getString(breedColumnIndex);
-                int currentGender = cursor.getInt(genderColumnIndex);
-                int currentWeight = cursor.getInt(weightColumnIndex);
-
-                //Imprimindo os valores na tela
-                displayView.append("\n" + currentId + " - " +
-                        currentName + " - " +
-                        currentBreed + " - " +
-                        currentGender + " - " +
-                        currentWeight
-                );
-            }
-        } finally {
-            // Always close the cursor when you're done reading from it. This releases all its
-            // resources and makes it invalid.
-            cursor.close();
-        }
+        // Attach the adapter to the ListView.
+        petListView.setAdapter(adapter);
     }
 
     private void insertData(){
