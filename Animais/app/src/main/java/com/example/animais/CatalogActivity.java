@@ -2,6 +2,7 @@ package com.example.animais;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,16 +12,25 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.animais.data.PetContract.PetEntry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class CatalogActivity extends AppCompatActivity {
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.widget.SimpleCursorAdapter;
+
+public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public ListView petListView;
+
+    public static final int PET_LOADER = 0;
+
+    private PetCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +42,14 @@ public class CatalogActivity extends AppCompatActivity {
         // Find the ListView which will be populated with the pet data
         petListView = (ListView) findViewById(R.id.list);
 
+        View emptyView = findViewById(R.id.empty_view);
+        petListView.setEmptyView(emptyView);
+
+        mCursorAdapter = new PetCursorAdapter(this, null);
+        petListView.setAdapter(mCursorAdapter);
+
+        getLoaderManager().initLoader(PET_LOADER, null, this);
+
         // Configure o FAB para abrir o EditorActivity
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -41,13 +59,22 @@ public class CatalogActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        petListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
+                Uri currentPetUri = ContentUris.withAppendedId(PetEntry.CONTENT_URI, id);
+                intent.setData(currentPetUri);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.e("STATUS", "onStart()");
-        displayDatabaseInfo();
     }
 
     @Override
@@ -80,43 +107,6 @@ public class CatalogActivity extends AppCompatActivity {
         Log.e("STATUS", "onRestart()");
     }
 
-    private void displayDatabaseInfo() {
-        // Create and/or open a database to read from it
-        // SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-        //Selecionando os nomes das colunas para passar como parâmetro na consulta
-        String[] projection = {PetEntry._ID,
-                PetEntry.COLUMN_PET_NAME,
-                PetEntry.COLUMN_PET_BREED,
-                PetEntry.COLUMN_PET_GENDER,
-                PetEntry.COLUMN_PET_WEIGHT
-        };
-
-        //Executando a consulta no banco de dados
-        /*Cursor cursor = db.query(PetEntry.TABLE_NAME,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                null
-        );*/
-
-        Cursor cursor = getContentResolver().query(PetEntry.CONTENT_URI, projection, null, null, null);
-
-        // cursor.moveToFirst() - move o cursor para a primeira linha do resultado
-        // cursor.moveToLast() - move o cursor para a ultima linha do resultado
-        // cursor.moveToPosition(2) - move o cursor para uma linha expecífica, no exemplo, move para a terceira linha
-        // cursor.moveToNext() - move o cursor para a próxima linha
-
-
-        // Setup an Adapter to create a list item for each row of pet data in the Cursor.
-        PetCursorAdapter adapter = new PetCursorAdapter(this, cursor);
-
-        // Attach the adapter to the ListView.
-        petListView.setAdapter(adapter);
-    }
-
     private void insertData(){
         ContentValues values = new ContentValues();
         values.put(PetEntry.COLUMN_PET_NAME, "half");
@@ -131,6 +121,14 @@ public class CatalogActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, getString(R.string.editor_insert_pet_failed), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * Método auxiliar para excluir todos os animais de estimação no banco de dados.
+     */
+    private void deleteAllPets() {
+        int rowsDeleted = getContentResolver().delete(PetEntry.CONTENT_URI, null, null);
+        Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
     }
 
     @Override
@@ -148,13 +146,40 @@ public class CatalogActivity extends AppCompatActivity {
             // Responda a um clique na opção de menu "Inserir dados fictícios"
             case R.id.action_insert_dummy_data:
                 insertData();
-                displayDatabaseInfo();
                 return true;
             // Responda a um clique na opção de menu "Excluir todas as entradas"
             case R.id.action_delete_all_entries:
-                // Não faça nada por enquanto
+                deleteAllPets();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        String[] projection = {
+                PetEntry._ID,
+                PetEntry.COLUMN_PET_NAME,
+                PetEntry.COLUMN_PET_BREED
+        };
+
+        return new CursorLoader(this,
+                PetEntry.CONTENT_URI,
+                projection,
+                null,
+                null,
+                null
+        );
+
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        this.mCursorAdapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        this.mCursorAdapter.swapCursor(null);
     }
 }

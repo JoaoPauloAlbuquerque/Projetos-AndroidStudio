@@ -2,6 +2,7 @@ package com.example.animais;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,13 @@ public class PetCursorAdapter extends CursorAdapter {
         TextView txtBreed = view.findViewById(R.id.summary);
         String name = cursor.getString(cursor.getColumnIndexOrThrow(PetContract.PetEntry.COLUMN_PET_NAME));
         String breed = cursor.getString(cursor.getColumnIndexOrThrow(PetContract.PetEntry.COLUMN_PET_BREED));
+
+        // Se a raça do animal de estimação for uma string vazia ou nula, use algum texto padrão
+        // que diz "Raça desconhecida", então o TextView não fica em branco.
+        if (TextUtils.isEmpty(breed)) {
+            breed = context.getString(R.string.unknown_breed);
+        }
+
         txtName.setText(name);
         txtBreed.setText(breed);
     }
